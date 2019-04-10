@@ -10,12 +10,12 @@ import com.util.db.MysqlUtils;
 import com.vae.bean.Schema;
 
 public class SchemaDaoImpl implements SchemaDao {
-	private QueryRunner runner = null;//²éÑ¯ÔËĞĞÆ÷
+	private QueryRunner runner = null;//æŸ¥è¯¢è¿è¡Œå™¨
 	public SchemaDaoImpl(){
 		runner = new QueryRunner();
 	}
 	
-	//·½·¨£ºÊ¹ÓÃBeanListHandler²éÑ¯ËùÓĞ¶ÔÏó
+	//æ–¹æ³•ï¼šä½¿ç”¨BeanListHandleræŸ¥è¯¢æ‰€æœ‰å¯¹è±¡
 	@Override
 	public List<Schema> findAll() throws SQLException {
 		String sql = "select table_name,table_comment from information_schema.tables where TABLE_SCHEMA='sx_14'";

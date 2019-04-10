@@ -10,7 +10,7 @@ import com.util.db.MysqlUtils;
 import com.vae.bean.Column;
 
 public class ColumnDaoImpl implements ColumnDao {
-	private QueryRunner runner = null;//²éÑ¯ÔËĞĞÆ÷
+	private QueryRunner runner = null;//æŸ¥è¯¢è¿è¡Œå™¨
 	public ColumnDaoImpl(){
 		runner = new QueryRunner();
 	}

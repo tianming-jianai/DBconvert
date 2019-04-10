@@ -8,20 +8,20 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 /**
- * Êı¾İ¿â²Ù×÷¹¤¾ßÀà
+ * æ•°æ®åº“æ“ä½œå·¥å…·ç±»
  * 
  * @author lamp
  * 
  */
 public class MysqlUtils {
 
-	// Êı¾İ¿âÁ¬½ÓµØÖ·
+	// æ•°æ®åº“è¿æ¥åœ°å€
 	public static String URL;
-	// ÓÃ»§Ãû
+	// ç”¨æˆ·å
 	public static String USERNAME;
-	// ÃÜÂë
+	// å¯†ç 
 	public static String PASSWORD;
-	// mysqlµÄÇı¶¯Àà
+	// mysqlçš„é©±åŠ¨ç±»
 	public static String DRIVER;
 
 	private static ResourceBundle rb = ResourceBundle.getBundle("com.util.db.db-config");
@@ -29,7 +29,7 @@ public class MysqlUtils {
 	private MysqlUtils() {
 	}
 
-	// Ê¹ÓÃ¾²Ì¬¿é¼ÓÔØÇı¶¯³ÌĞò
+	// ä½¿ç”¨é™æ€å—åŠ è½½é©±åŠ¨ç¨‹åº
 	static {
 		URL = rb.getString("mysql.jdbc.url");
 		USERNAME = rb.getString("mysql.jdbc.username");
@@ -42,19 +42,19 @@ public class MysqlUtils {
 		}
 	}
 
-	// ¶¨ÒåÒ»¸ö»ñÈ¡Êı¾İ¿âÁ¬½ÓµÄ·½·¨
+	// å®šä¹‰ä¸€ä¸ªè·å–æ•°æ®åº“è¿æ¥çš„æ–¹æ³•
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("»ñÈ¡Á¬½ÓÊ§°Ü");
+			System.out.println("è·å–è¿æ¥å¤±è´¥");
 		}
 		return conn;
 	}
 
-	// ¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+	// å…³é—­æ•°æ®åº“è¿æ¥
 	public static void close(ResultSet rs, Statement stat, Connection conn) {
 		try {
 			if (rs != null)

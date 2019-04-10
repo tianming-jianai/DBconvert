@@ -13,7 +13,7 @@ import com.vae.dao.ColumnDaoImpl;
 import com.vae.dao.SchemaDaoImpl;
 
 /**
- * ¸ù¾İMYSQL¿â£¬µ¼³öÏàÓ¦µÄORACLE½¨¿â½Å±¾
+ * æ ¹æ®MYSQLåº“ï¼Œå¯¼å‡ºç›¸åº”çš„ORACLEå»ºåº“è„šæœ¬
  * 
  * */
 public class ConvertDB {
@@ -25,20 +25,20 @@ public class ConvertDB {
 			name VARCHAR2(32) ,
 			age VARCHAR2(32) 
 			);
-			COMMENT ON table t1 IS '¸öÈËĞÅÏ¢';
+			COMMENT ON table t1 IS 'ä¸ªäººä¿¡æ¯';
 			comment on column t1.id is 'id';
-			comment on column t1.name is 'ĞÕÃû';
-			comment on column t1.age is 'ÄêÁä';*/
+			comment on column t1.name is 'å§“å';
+			comment on column t1.age is 'å¹´é¾„';*/
 		SchemaDaoImpl schemadao = new SchemaDaoImpl();
 		ColumnDaoImpl columndao = new ColumnDaoImpl();
 		List<Schema> schemas = schemadao.findAll();
 
 		File file = new File("d:/jl.sql");
 		for(int i = 0; i < schemas.size(); i++){
-			StringBuffer csql = new StringBuffer();//create table½Å±¾
-			StringBuffer osql = new StringBuffer();//×¢ÊÍ½Å±¾
+			StringBuffer csql = new StringBuffer();//create tableè„šæœ¬
+			StringBuffer osql = new StringBuffer();//æ³¨é‡Šè„šæœ¬
 			Schema schema = schemas.get(i);
-			csql.append("----------No"+(i+1)+"£¬¿ªÊ¼´´½¨±í£º"+schema.getTable_name()+"\n");
+			csql.append("----------No"+(i+1)+"ï¼Œå¼€å§‹åˆ›å»ºè¡¨ï¼š"+schema.getTable_name()+"\n");
 			csql.append("create table "+schema.getTable_name()+"(");
 			try {
 				List<Column> columns = columndao.findAll(schema.getTable_name());
@@ -63,16 +63,16 @@ public class ConvertDB {
 						csql.append(column.getColumn_name()+" "+oraKey+"("+2*mysqlKeyLen+") ");
 					}
 				}
-				csql = column.getColumn_name().equals("id")?csql.append("primary key,"):csql.append(",");//ÊÇ·ñÎªÖ÷¼ü
+				csql = column.getColumn_name().equals("id")?csql.append("primary key,"):csql.append(",");//æ˜¯å¦ä¸ºä¸»é”®
 				
-				//×Ö¶Î×¢ÊÍ
+				//å­—æ®µæ³¨é‡Š
 				osql.append("comment on column "+schema.getTable_name()+"."+column.getColumn_name()+" is '"+column.getColumn_comment()+"';\n");
 			}
 			csql = csql.deleteCharAt(csql.lastIndexOf(",")).append(");\n");
 			
-			//Ìí¼Ó±í×¢ÊÍ
+			//æ·»åŠ è¡¨æ³¨é‡Š
 			csql.append("comment on table "+schema.getTable_name()+" is '"+schema.getTable_comment()+"';\n");
-			//Ìí¼Ó×Ö¶Î×¢ÊÍ
+			//æ·»åŠ å­—æ®µæ³¨é‡Š
 			csql.append(osql.toString());
 			
 //			String[] o = csql.toString().split(";");
@@ -81,7 +81,7 @@ public class ConvertDB {
 ////				DDLDaoImpl.execute(o[j]);
 //			}
 			FileUtils.writeByteArrayToFile(file, csql.toString().getBytes(), true);
-			System.out.println(schema.getTable_name()+"´´½¨Íê³É");
+			System.out.println(schema.getTable_name()+"åˆ›å»ºå®Œæˆ");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

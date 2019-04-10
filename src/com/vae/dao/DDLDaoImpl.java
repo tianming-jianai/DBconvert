@@ -1,4 +1,4 @@
-package com.vae.dao;
+ï»¿package com.vae.dao;
 
 import java.sql.SQLException;
 
@@ -9,7 +9,7 @@ import com.util.db.OracleUtils;
 
 public class DDLDaoImpl{
 	
-	private static QueryRunner runner = new QueryRunner();//²éÑ¯ÔËĞĞÆ÷
+	private static QueryRunner runner = new QueryRunner();//æŸ¥è¯¢è¿è¡Œå™¨
 
 	public static boolean execute(String sql) throws SQLException {
 		

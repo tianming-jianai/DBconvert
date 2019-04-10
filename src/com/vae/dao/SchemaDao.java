@@ -1,4 +1,4 @@
-package com.vae.dao;
+ï»¿package com.vae.dao;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -7,7 +7,7 @@ import com.vae.bean.Schema;
 
 public interface SchemaDao {
 
-	// ²éÕÒËùÓĞ
+	// æŸ¥æ‰¾æ‰€æœ‰
 	public List<Schema> findAll() throws SQLException;
 
 	
